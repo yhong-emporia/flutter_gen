@@ -70,6 +70,9 @@ FlutterGen _$FlutterGenFromJson(Map json) => $checkedCreate(
           json,
           requiredKeys: const [
             'output',
+            'assets_filename',
+            'fonts_filename',
+            'colors_filename',
             'line_length',
             'assets',
             'fonts',
@@ -79,6 +82,11 @@ FlutterGen _$FlutterGenFromJson(Map json) => $checkedCreate(
         );
         final val = FlutterGen(
           output: $checkedConvert('output', (v) => v as String),
+          assetsFilename:
+              $checkedConvert('assets_filename', (v) => v as String),
+          fontsFilename: $checkedConvert('fonts_filename', (v) => v as String),
+          colorsFilename:
+              $checkedConvert('colors_filename', (v) => v as String),
           lineLength: $checkedConvert('line_length', (v) => v as int),
           assets: $checkedConvert(
               'assets', (v) => FlutterGenAssets.fromJson(v as Map)),
@@ -91,7 +99,12 @@ FlutterGen _$FlutterGenFromJson(Map json) => $checkedCreate(
         );
         return val;
       },
-      fieldKeyMap: const {'lineLength': 'line_length'},
+      fieldKeyMap: const {
+        'assetsFilename': 'assets_filename',
+        'fontsFilename': 'fonts_filename',
+        'colorsFilename': 'colors_filename',
+        'lineLength': 'line_length'
+      },
     );
 
 FlutterGenColors _$FlutterGenColorsFromJson(Map json) => $checkedCreate(

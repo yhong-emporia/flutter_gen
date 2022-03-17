@@ -14,15 +14,15 @@ import 'utils/file.dart';
 class FlutterGenerator {
   const FlutterGenerator(
     this.pubspecFile, {
-    this.assetsName = 'assets.gen.dart',
-    this.colorsName = 'colors.gen.dart',
-    this.fontsName = 'fonts.gen.dart',
+    this.assetsName,
+    this.colorsName,
+    this.fontsName,
   });
 
   final File pubspecFile;
-  final String assetsName;
-  final String colorsName;
-  final String fontsName;
+  final String? assetsName;
+  final String? colorsName;
+  final String? fontsName;
 
   Future<void> build() async {
     stdout.writeln(flutterGenVersion);
@@ -53,7 +53,7 @@ class FlutterGenerator {
       final generated =
           generateColors(pubspecFile, formatter, flutterGen.colors);
       final colors =
-          File(normalize(join(pubspecFile.parent.path, output, colorsName)));
+          File(normalize(join(pubspecFile.parent.path, output, colorsName ?? flutterGen.colorsFilename)));
       writeAsString(generated, file: colors);
       stdout.writeln('Generated: ${colors.absolute.path}');
     }
@@ -64,7 +64,7 @@ class FlutterGenerator {
         formatter,
       );
       final assets =
-          File(normalize(join(pubspecFile.parent.path, output, assetsName)));
+          File(normalize(join(pubspecFile.parent.path, output, assetsName ?? flutterGen.assetsFilename)));
       writeAsString(generated, file: assets);
       stdout.writeln('Generated: ${assets.absolute.path}');
     }
@@ -72,7 +72,7 @@ class FlutterGenerator {
     if (flutterGen.fonts.enabled && flutter.fonts.isNotEmpty) {
       final generated = generateFonts(formatter, flutter.fonts);
       final fonts =
-          File(normalize(join(pubspecFile.parent.path, output, fontsName)));
+          File(normalize(join(pubspecFile.parent.path, output, fontsName ?? flutterGen.fontsFilename)));
       writeAsString(generated, file: fonts);
       stdout.writeln('Generated: ${fonts.absolute.path}');
     }

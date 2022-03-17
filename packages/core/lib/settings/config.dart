@@ -34,6 +34,9 @@ name: $invalidStringValue
 
 flutter_gen:
   output: lib/gen/
+  assets_filename: assets.gen.dart
+  fonts_filename: fonts.gen.dart
+  colors_filename: colors.gen.dart
   line_length: 80
 
   integrations:

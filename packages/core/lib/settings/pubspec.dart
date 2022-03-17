@@ -53,6 +53,9 @@ class FlutterFonts {
 class FlutterGen {
   FlutterGen({
     required this.output,
+    required this.assetsFilename,
+    required this.fontsFilename,
+    required this.colorsFilename,
     required this.lineLength,
     required this.assets,
     required this.fonts,
@@ -62,6 +65,15 @@ class FlutterGen {
 
   @JsonKey(name: 'output', required: true)
   final String output;
+
+  @JsonKey(name: 'assets_filename', required: true)
+  final String assetsFilename;
+
+  @JsonKey(name: 'fonts_filename', required: true)
+  final String fontsFilename;
+
+  @JsonKey(name: 'colors_filename', required: true)
+  final String colorsFilename;
 
   @JsonKey(name: 'line_length', required: true)
   final int lineLength;
@@ -91,8 +103,7 @@ class FlutterGenColors {
   @JsonKey(name: 'inputs', required: true)
   final List<String> inputs;
 
-  factory FlutterGenColors.fromJson(Map json) =>
-      _$FlutterGenColorsFromJson(json);
+  factory FlutterGenColors.fromJson(Map json) => _$FlutterGenColorsFromJson(json);
 }
 
 @JsonSerializable()
@@ -106,9 +117,7 @@ class FlutterGenAssets {
     required this.packageParameterEnabled,
     required this.style,
   }) {
-    if (style != dotDelimiterStyle &&
-        style != snakeCaseStyle &&
-        style != camelCaseStyle) {
+    if (style != dotDelimiterStyle && style != snakeCaseStyle && style != camelCaseStyle) {
       throw ArgumentError.value(style, 'style');
     }
   }
@@ -128,8 +137,7 @@ class FlutterGenAssets {
 
   bool get isCamelCaseStyle => style == camelCaseStyle;
 
-  factory FlutterGenAssets.fromJson(Map json) =>
-      _$FlutterGenAssetsFromJson(json);
+  factory FlutterGenAssets.fromJson(Map json) => _$FlutterGenAssetsFromJson(json);
 }
 
 @JsonSerializable()
@@ -159,6 +167,5 @@ class FlutterGenIntegrations {
   @JsonKey(name: 'rive', required: true)
   final bool rive;
 
-  factory FlutterGenIntegrations.fromJson(Map json) =>
-      _$FlutterGenIntegrationsFromJson(json);
+  factory FlutterGenIntegrations.fromJson(Map json) => _$FlutterGenIntegrationsFromJson(json);
 }
