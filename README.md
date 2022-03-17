@@ -117,6 +117,9 @@ Default configuration can be found [here](#default-configuration).
 
 flutter_gen:
   output: lib/gen/ # Optional (default: lib/gen/)
+  assets_filename: assets.gen.dart # Optional, allows you to set a custom filename for the assets file
+  fonts_filename: fonts.gen.dart # Optional, allows you to set a custom filename for the fonts file
+  colors_filename: colors.gen.dart # Optional, allows you to set a custom filename for the colors file
   line_length: 80 # Optional (default: 80)
 
   # Optional
